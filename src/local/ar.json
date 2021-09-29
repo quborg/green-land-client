@@ -1,0 +1,20 @@
+{
+  "search": "بحث",
+  "sheikhs": "المشايخ",
+  "categories": "التصانيف",
+  "books": "الكتب",
+  "indexes": "الفهارس",
+  "indexing": "الفهرسة",
+  "indexView": "عرض الفهرسة",
+  "dump": "التفريغ",
+  "writeDump": "عرض التفريغ",
+  "search method": "طريقة البحث",
+  "search in": "البحث في",
+  "any word": "أي كلمة",
+  "all words": "جميع الكلمات",
+  "exact search": "بحث مطابق",
+  "words excluded": "كلمات مستبعدة من النتائج",
+  "in fatwas only": "بحث في الأسئلة والفتاوى فقط",
+  "i exclude": "أستبعد هذه الكلمات",
+  "advancedSearch": "بحث متقدم"
+}

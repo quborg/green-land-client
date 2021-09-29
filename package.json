@@ -1,0 +1,115 @@
+{
+  "name": "green-land-client",
+  "version": "0.1.0",
+  "license": "MIT",
+  "private": false,
+  "description": "react-app-ts, apollo-client, mui",
+  "repository": "git@github.com:quborg/green-land-client.git",
+  "contributors": [
+    {
+      "name": "Miloud Lafttah",
+      "email": "miloud.lafttah@gmail.com"
+    }
+  ],
+  "engines": {
+    "yarn": ">=1.22.x"
+  },
+  "main": "./server.js",
+  "homepage": "./",
+  "scripts": {
+    "start": "node ./server.js",
+    "dev": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "eslint src/ --ext .ts,.tsx --fix",
+    "format": "prettier --write 'src/**/*.{ts,tsx,js,json}'"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx,json}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "cacheDirectories": [
+    "node_modules"
+  ],
+  "moduleDirectories": [
+    "node_modules",
+    "src"
+  ],
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}"
+    ]
+  },
+  "dependencies": {
+    "@apollo/client": "^3.3.11",
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.57",
+    "@types/react-transition-group": "^4.4.1",
+    "@typescript-eslint/eslint-plugin": "^4.15.1",
+    "@typescript-eslint/parser": "^4.15.1",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-import-helpers": "^1.1.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "express": "^4.17.1",
+    "generate-avatar": "^1.4.10",
+    "graphql": "^14.5.8",
+    "jsonwebtoken": "^8.5.1",
+    "jss": "^10.7.1",
+    "jss-rtl": "^0.3.0",
+    "material-ui-image": "^3.3.1",
+    "moment": "^2.29.1",
+    "mui-datatables": "^3.7.6",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.2",
+    "react-transition-group": "^4.4.2",
+    "serve-favicon": "^2.5.0",
+    "typescript": "^4.1.5"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.12.0",
+    "@testing-library/react": "^11.2.6",
+    "@testing-library/user-event": "^13.1.8",
+    "@types/jest": "^24.0.0",
+    "@types/jsonwebtoken": "^8.5.2",
+    "@types/mui-datatables": "^3.7.1",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
+    "@types/react-router-dom": "^5.1.7",
+    "husky": "^5.0.9",
+    "lint-staged": "^10.5.4",
+    "prettier": "^2.2.1",
+    "react-test-renderer": "^17.0.2"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "vb-admin-panel-client",
+  "description": "Admin Panel; react-ts, apollo, graphql, material ui",
+  "scripts": {
+  },
+  "env": {
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
