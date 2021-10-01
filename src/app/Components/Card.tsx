@@ -31,7 +31,6 @@ const Card: React.FC<TYPES.CardProps> = ({ children, theme, title }) => {
   } = useQuery(State.FILTERS);
 
   const { data } = useQuery(State.DATA);
-  console.log('---->', data);
 
   const titleHeight = useRef<HTMLDivElement>(null);
   const bodyHeight = useRef<HTMLDivElement>(null);

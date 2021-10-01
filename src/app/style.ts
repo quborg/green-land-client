@@ -92,6 +92,7 @@ const style = (theme: Theme): any => ({
         theme.palette.common.yellow,
         0.5
       )})`,
+      boxShadow: 'inset 0px 0px 6px 1px rgb(0 0 0 / 20%)',
     },
   },
   expandableItem: {
