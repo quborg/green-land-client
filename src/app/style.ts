@@ -95,7 +95,7 @@ const style = (theme: Theme): any => ({
       boxShadow: 'inset 0px 0px 6px 1px rgb(0 0 0 / 20%)',
     },
   },
-  expandableItem: {
+  expandableButton: {
     '&:hover': {
       '& svg': {
         color: theme.palette.info.main,

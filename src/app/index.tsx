@@ -1,6 +1,6 @@
 import { Grid, withStyles } from '@material-ui/core';
 
-import C from './Components';
+import CardBox from './CardBox';
 import style from './style';
 
 const App: React.FC<TYPES.AppProps> = ({ classes }) => (
@@ -8,41 +8,41 @@ const App: React.FC<TYPES.AppProps> = ({ classes }) => (
     <Grid className={classes.container} item xs>
       <Grid container>
         <Grid className={classes.search} item xs>
-          <C cName="search" />
+          <CardBox cardName="search" />
         </Grid>
       </Grid>
       <Grid container>
         <Grid className={classes.sheikhsClassify} item xs={6}>
           <Grid container>
             <Grid className={classes.sheikhs} item xs>
-              <C cName="sheikhs" />
+              <CardBox cardName="sheikhs" />
             </Grid>
           </Grid>
           <Grid container>
             <Grid className={classes.categories} item xs>
-              <C cName="categories" />
+              <CardBox cardName="categories" />
             </Grid>
           </Grid>
         </Grid>
         <Grid className={classes.books} item xs={6}>
-          <C cName="books" />
+          <CardBox cardName="books" />
         </Grid>
       </Grid>
     </Grid>
 
     <Grid className={classes.container} item xs>
-      <C cName="indexes" />
+      <CardBox cardName="indexes" />
     </Grid>
 
     <Grid className={classes.container} item xs>
       <Grid container>
         <Grid className={classes.indexView} item xs>
-          <C cName="indexView" />
+          <CardBox cardName="indexView" />
         </Grid>
       </Grid>
       <Grid container>
         <Grid className={classes.writeDump} item xs>
-          <C cName="writeDump" />
+          <CardBox cardName="writeDump" />
         </Grid>
       </Grid>
     </Grid>

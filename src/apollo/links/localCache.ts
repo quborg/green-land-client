@@ -11,10 +11,10 @@ const fieldToFilterName = {
 
 const initFilters = (fieldName: string, data: TYPES.SelectableEntities): void => {
   if (Object.keys(fieldToFilterName).includes(fieldName)) {
-    const cName = fieldToFilterName[fieldName];
+    const CardName = fieldToFilterName[fieldName];
     let nextFilters = ReactiveVars.filters();
     const {
-      [cName]: { selected = {}, all, expanded = {} },
+      [CardName]: { selected = {}, all, expanded = {} },
       ...filters
     } = nextFilters;
     const selectedLength = Object.keys(selected).length;
@@ -28,10 +28,10 @@ const initFilters = (fieldName: string, data: TYPES.SelectableEntities): void =>
       });
       nextFilters = {
         ...filters,
-        [cName]: {
+        [CardName]: {
           all,
           selected: nextSelected,
-          ...(cName === KEYS.categories && { expanded: nextExpanded }),
+          ...(CardName === KEYS.categories && { expanded: nextExpanded }),
         },
       };
     }
@@ -44,10 +44,10 @@ const initData = (fieldName: string, data: TYPES.SelectableEntities): void => {
 };
 
 const dedupData = (e: any[], i: any[]): any[] => {
-  let indexes = {};
+  const indexes: string[] = [];
   const ddD = [...e, ...i].filter(({ _id }) => {
-    const notInclude = !Object.keys(indexes).includes(_id);
-    indexes = { ...indexes, _id };
+    const notInclude = !indexes.includes(_id);
+    if (notInclude) indexes.push(_id);
     return notInclude;
   });
   return ddD;

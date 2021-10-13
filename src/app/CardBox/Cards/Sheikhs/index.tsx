@@ -5,7 +5,7 @@ import { KEYS } from 'src/defs';
 import { Query, State } from 'src/graphql';
 import { reactiveAlert, reactiveFilters } from 'src/helpers';
 
-const cName = KEYS.sheikhs;
+const CardName = KEYS.sheikhs;
 
 const Sheikhs: React.FC<TYPES.SheikhsProps> = ({ classes }) => {
   const {
@@ -17,17 +17,17 @@ const Sheikhs: React.FC<TYPES.SheikhsProps> = ({ classes }) => {
   if (error) reactiveAlert(error);
 
   const handleItemClick = (_id: string): void => {
-    const { selected, all, expanded } = filters[cName];
+    const { selected, all, expanded } = filters[CardName];
     const nextSelected = { ...selected, [_id]: !selected[_id] };
     const itemsLength = Object.keys(selected).length;
     const selectedLength = Object.keys(nextSelected).filter((id) => nextSelected[id]).length;
     let nextAll = all;
     if (!selectedLength) nextAll = false;
-    else if (selectedLength < itemsLength) nextAll = '';
+    else if (selectedLength < itemsLength) nextAll = KEYS.indeterminate;
     else nextAll = true;
     reactiveFilters({
       ...filters,
-      [cName]: { all: nextAll, selected: nextSelected, expanded },
+      [CardName]: { all: nextAll, selected: nextSelected, expanded },
     });
   };
 
@@ -36,7 +36,7 @@ const Sheikhs: React.FC<TYPES.SheikhsProps> = ({ classes }) => {
       {data?.getSheikhs?.map(({ _id, name }) => (
         <Box
           className={`${classes.selectableItem} ${
-            filters[cName].selected[_id] ? 'selected' : ''
+            filters[CardName].selected[_id] ? 'selected' : KEYS.indeterminate
           }`}
           key={_id}
           onClick={() => handleItemClick(_id)}

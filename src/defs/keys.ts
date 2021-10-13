@@ -17,6 +17,7 @@ export default {
   warning: <Color>'warning',
   app: 'app',
   all: 'all',
+  indeterminate: 'indeterminate',
   redirect: 'redirect',
   home: 'home',
   layout: 'layout',
