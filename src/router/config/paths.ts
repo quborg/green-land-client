@@ -1,4 +1,4 @@
-export const SIGN = '/sign';
-export const APP = '/app';
+export const ROOT = '/';
 export const HOME = '/';
-export const PROFILE = '/profile/:id';
+export const HOUDA_WA_NOUR = '/houda-wa-nour';
+export const RSLAN = '/rslan';

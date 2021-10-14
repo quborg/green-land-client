@@ -1,27 +1,23 @@
 import * as Icons from '@material-ui/icons';
-import App from 'src/app';
+import { HoudaWaNour, Layout, Rslan } from 'src/apps';
 import { KEYS } from 'src/defs';
-import Layout from 'src/layout';
-// import { Dashboard } from 'src/app/Layout/components';
-// import { Item, Items } from 'src/app/Layout/views';
-import { Home, Sign } from 'src/pages';
-// import { withDrawer } from 'src/theme';
+import { Home } from 'src/pages';
 
 import * as PATHS from './paths';
 
 export const layoutRoute: TYPES.RouteConfigProps[] = [
   {
     key: KEYS.layout,
-    path: PATHS.HOME,
+    path: PATHS.ROOT,
     component: Layout,
   },
   {
     key: KEYS.redirect,
-    to: PATHS.HOME,
+    to: PATHS.ROOT,
   },
 ];
 
-export const mainRoutes: TYPES.RouteConfigProps[] = [
+export const menuRoutes: TYPES.RouteConfigProps[] = [
   {
     exact: true,
     key: KEYS.home,
@@ -32,51 +28,23 @@ export const mainRoutes: TYPES.RouteConfigProps[] = [
     label: 'الرئيسية',
   },
   {
-    key: KEYS.app,
-    path: PATHS.APP,
-    component: App,
+    key: KEYS.houdaWaNour,
+    path: PATHS.HOUDA_WA_NOUR,
+    component: HoudaWaNour,
     menu: true,
     Icon: Icons.LibraryBooksRounded,
     label: 'الهدى والنور',
   },
   {
-    key: KEYS.sign,
-    path: PATHS.SIGN,
-    component: Sign,
+    key: KEYS.rslan,
+    path: PATHS.RSLAN,
+    component: Rslan,
+    menu: true,
+    Icon: Icons.CreateOutlined,
+    label: 'الشيخ رسلان',
   },
   {
     key: KEYS.redirect,
     to: PATHS.HOME,
   },
 ];
-
-export const ItemRoutes = {
-  // question: [
-  //   {
-  //     key: KEYS.question,
-  //     path: PATHS.QUESTION,
-  //     component: withDrawer(Item),
-  //   },
-  // ],
-  // section: [
-  //   {
-  //     key: KEYS.section,
-  //     path: PATHS.SECTION,
-  //     component: withDrawer(Item),
-  //   },
-  // ],
-  // category: [
-  //   {
-  //     key: KEYS.category,
-  //     path: PATHS.CATEGORY,
-  //     component: withDrawer(Item),
-  //   },
-  // ],
-  // user: [
-  //   {
-  //     key: KEYS.user,
-  //     path: PATHS.USER,
-  //     component: withDrawer(Item),
-  //   },
-  // ],
-};

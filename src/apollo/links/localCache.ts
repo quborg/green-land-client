@@ -1,7 +1,7 @@
 import { FieldPolicy, InMemoryCache } from '@apollo/client';
 import { ReactiveVars } from 'src/apollo';
 import { KEYS } from 'src/defs';
-import { reactiveFilters } from 'src/helpers';
+import { setReactiveLocalFilters } from 'src/helpers';
 
 const fieldToFilterName = {
   [KEYS.getSheikhs]: KEYS.sheikhs,
@@ -35,7 +35,7 @@ const initFilters = (fieldName: string, data: TYPES.SelectableEntities): void =>
         },
       };
     }
-    reactiveFilters(nextFilters);
+    setReactiveLocalFilters(nextFilters);
   }
 };
 

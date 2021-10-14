@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 import { ReactiveVars } from 'src/apollo';
 import { CONST, KEYS } from 'src/defs';
-import { reactiveAlert } from 'src/helpers';
 
 const ErrorContext = React.createContext({ handleUpdateErrors: (e) => {} });
 
@@ -15,9 +14,9 @@ const ErrorProvider: React.FC = ({ children }) => {
 
   return (
     <ErrorContext.Provider value={{ handleUpdateErrors }}>
-      {errors.forEach(({ message, errors: inputsErrors }) => {
-        if (message) reactiveAlert(message, KEYS.error);
-        if (inputsErrors) ReactiveVars.inputsErrors(inputsErrors);
+      {errors.forEach(({ message, errors: errors2 }) => {
+        if (message) ReactiveVars.alert({ message, open: true, severity: KEYS.error });
+        if (errors2) console.log('errors2', errors2);
       })}
       {children}
     </ErrorContext.Provider>
