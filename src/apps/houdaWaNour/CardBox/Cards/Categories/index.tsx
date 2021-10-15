@@ -1,22 +1,19 @@
 import { useEffect } from 'react';
 
 import { useQuery } from '@apollo/client';
-import { Badge, Box, lighten, withStyles } from '@material-ui/core';
-import style from 'src/apps/houdaWaNour/style';
+import { Box } from '@material-ui/core';
+import { ReactiveVars } from 'src/apollo';
 import { KEYS } from 'src/defs';
 import { Query, State } from 'src/graphql';
-import { setReactiveLocalFilters } from 'src/helpers';
+import { Loader } from 'src/theme/components';
 
-import ExpandableButton from './ExpandableButton';
+import View from './view';
 
-const Categories: React.FC<TYPES.CategoriesProps> = ({ classes, theme }) => {
+const CardName = KEYS.categories;
+
+const Categories: React.FC = () => {
   const {
-    data: {
-      filters: {
-        categories: { all, selected, expanded },
-        ...restFilters
-      },
-    },
+    data: { filters },
   } = useQuery(State.FILTERS);
 
   const {
@@ -27,6 +24,7 @@ const Categories: React.FC<TYPES.CategoriesProps> = ({ classes, theme }) => {
   } = useQuery(Query.CATEGORY.CATEGORIES);
 
   useEffect(() => {
+    const { expanded } = filters[CardName];
     const expandedIds = Object.keys(expanded).filter((_id) => expanded[_id]);
     if (expandedIds.length) {
       const expandedNotLoaded = expandedIds.filter(
@@ -41,76 +39,16 @@ const Categories: React.FC<TYPES.CategoriesProps> = ({ classes, theme }) => {
         );
       }
     }
-  }, [expanded, data, fetchMore]);
+  }, [data, filters, fetchMore]);
 
-  const handleItemClick = (_id: string): void => {
-    const nextSelected = { ...selected, [_id]: !selected[_id] };
-    const prevSelectedLength = Object.keys(selected).length;
-    const nextSelectedLength = Object.keys(nextSelected).filter(
-      (id) => nextSelected[id]
-    ).length;
-    let nextAll = all;
-    if (!nextSelectedLength) nextAll = false;
-    else if (nextSelectedLength < prevSelectedLength) nextAll = KEYS.indeterminate;
-    else nextAll = true;
-    setReactiveLocalFilters({
-      ...restFilters,
-      categories: { all: nextAll, selected: nextSelected, expanded: { ...expanded } },
-    });
-  };
-
-  const expandableItems = (filter: { parent: number } = { parent: 0 }): React.ComponentType =>
-    data.getCategories
-      .filter(({ parent }) => parent === filter.parent)
-      .map(({ _id, name, ID, level, child }) => (
-        <Box
-          borderColor={lighten(theme.palette.common.grayDark, 0.8)}
-          className={`${classes.selectableItemWrapper}${level > 1 ? ' child-wrapper' : ''}`}
-          display="flex"
-          flexDirection="column"
-          key={_id}>
-          <Box
-            className={`${classes.selectableItem}${selected[_id] ? ' selected' : ''}${
-              expanded[_id] && child ? ' expanded' : ''
-            }${level > 1 ? ' child' : ''}`}
-            display="flex"
-            py={0.3}
-            width="100%">
-            <ExpandableButton
-              {...{
-                _id,
-                ID,
-                child,
-                level,
-                all,
-                selected,
-                expanded,
-                restFilters,
-                fetchMore,
-                loading,
-              }}
-            />
-            <Box
-              display="flex"
-              key={`${_id}-selectable`}
-              onClick={() => handleItemClick(_id)}
-              width="100%">
-              {name}
-            </Box>
-          </Box>
-          {level < 8 && expanded[_id] && (
-            <Box key={`${_id}-nest-list`} ml={1}>
-              {expandableItems({ parent: ID })}
-            </Box>
-          )}
-        </Box>
-      ));
+  if (error) ReactiveVars.alert({ error, open: true, severity: KEYS.error });
 
   return (
     <Box height="100%" overflow="auto">
-      {expandableItems()}
+      {loading && <Loader loading={loading} />}
+      <View {...{ data: data.getCategories, filters, fetchMore, loading }} />
     </Box>
   );
 };
 
-export default withStyles(style, { withTheme: true })(Categories);
+export default Categories;

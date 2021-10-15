@@ -6,21 +6,9 @@ export const ALERT = gql`
   }
 `;
 
-export const ACTION = gql`
-  query Action {
-    action @client
-  }
-`;
-
 export const FILTERS = gql`
   query Filters {
     filters @client
-  }
-`;
-
-export const INPUTS_ERRORS = gql`
-  query InputsErrors {
-    inputsErrors @client
   }
 `;
 
@@ -31,9 +19,7 @@ export const DATA = gql`
 `;
 
 export default {
-  ACTION,
   ALERT,
   FILTERS,
-  INPUTS_ERRORS,
   DATA,
 };

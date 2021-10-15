@@ -1,17 +1,17 @@
 import { useQuery } from '@apollo/client';
-import { Box, withStyles } from '@material-ui/core';
+import { Box } from '@material-ui/core';
 import { ReactiveVars } from 'src/apollo';
-import style from 'src/apps/houdaWaNour/style';
 import { KEYS } from 'src/defs';
 import { Query, State } from 'src/graphql';
 import { Loader } from 'src/theme/components';
 
 import View from './view';
 
-const Books: React.FC<TYPES.ClassesProps> = ({ classes }) => {
+const Books: React.FC = () => {
   const {
     data: { filters },
   } = useQuery(State.FILTERS);
+
   const { loading, error, data = { getBooks: [] } } = useQuery(Query.BOOK.BOOKS);
 
   if (error) ReactiveVars.alert({ error, open: true, severity: KEYS.error });
@@ -24,4 +24,4 @@ const Books: React.FC<TYPES.ClassesProps> = ({ classes }) => {
   );
 };
 
-export default withStyles(style)(Books);
+export default Books;

@@ -77,12 +77,6 @@ const localCache = new InMemoryCache({
         alert: {
           read: () => ReactiveVars.alert(),
         },
-        action: {
-          read: () => ReactiveVars.action(),
-        },
-        inputsErrors: {
-          read: () => ReactiveVars.inputsErrors(),
-        },
         data: {
           read: () => ReactiveVars.data(),
         },
