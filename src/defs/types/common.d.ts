@@ -23,11 +23,6 @@ declare namespace TYPES {
     theme: Theme;
   }
 
-  interface ApolloResultFlagsProps {
-    loading: boolean;
-    error?: ApolloError;
-  }
-
   interface TRefetch {
     refetch: ObservableQueryFields.refetch;
   }

@@ -7,13 +7,13 @@ import Title from './Title';
 const CardsWrapper: React.FC<TYPES.CardProps> = ({ children, cardName }) => {
   const boxHeight = useRef<HTMLDivElement>(null);
   const titleHeight = useRef<HTMLDivElement>(null);
-  const [bodyHeight, setHeight] = useState<any>('100%');
+  const [bodyHeight, setBodyHeight] = useState<any>('100%');
 
   useEffect(() => {
-    const t = titleHeight?.current?.clientHeight;
-    const b = boxHeight?.current?.clientHeight;
-    if (b && t && b - t !== bodyHeight) {
-      setHeight(b - t - 16);
+    const boxH = boxHeight?.current?.clientHeight;
+    const titleH = titleHeight?.current?.clientHeight;
+    if (boxH && titleH) {
+      setBodyHeight(boxH - titleH - 16);
     }
   }, [bodyHeight]);
 
@@ -25,9 +25,7 @@ const CardsWrapper: React.FC<TYPES.CardProps> = ({ children, cardName }) => {
             <div ref={titleHeight}>
               <Title cardName={cardName} />
             </div>
-            <Box>
-              <Divider />
-            </Box>
+            <Divider />
             <Box height={bodyHeight} pb={0}>
               {children}
             </Box>
