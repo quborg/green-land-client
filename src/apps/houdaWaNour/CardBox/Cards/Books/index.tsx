@@ -1,9 +1,8 @@
 import { useQuery } from '@apollo/client';
 import { Box } from '@material-ui/core';
-import { ReactiveVars } from 'src/apollo';
-import { KEYS } from 'src/defs';
+import { toast } from 'material-react-toastify';
 import { Query, State } from 'src/graphql';
-import { Alert, Loader } from 'src/theme/components';
+import { Loader } from 'src/theme/components';
 
 import View from './view';
 
@@ -13,9 +12,8 @@ const Books: React.FC = () => {
   } = useQuery(State.FILTERS);
 
   const { loading, error, data = { getBooks: [] } } = useQuery(Query.BOOK.BOOKS);
-  const err = 'example error';
 
-  if (error) return <Alert message={err} open severity={KEYS.error} />;
+  toast.error(error);
 
   return (
     <Box height="100%" overflow="auto">

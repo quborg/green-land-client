@@ -8,9 +8,7 @@ declare namespace TYPES {
     SvgIconTypeMap,
     Theme,
   } from '@material-ui/core';
-  import { OverridableComponent } from '@material-ui/core/OverridableComponent';
   import { AlertProps as MuiAlertProps } from '@material-ui/lab';
-  import { MUIDataTableOptions, MUIDataTableProps } from 'mui-datatables';
   import { KEYS } from 'src/defs';
 
   type MaybeIn<T> = { [P in keyof T]?: T[P] };

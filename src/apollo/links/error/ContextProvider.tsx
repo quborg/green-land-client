@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import { CONST, KEYS } from 'src/defs';
-import { Alert } from 'src/theme/components';
+import { toast } from 'material-react-toastify';
+import { CONST } from 'src/defs';
 
 const ErrorContext = React.createContext({ handleUpdateErrors: (e) => {} });
 
@@ -14,9 +14,7 @@ const ErrorProvider: React.FC = ({ children }) => {
 
   return (
     <ErrorContext.Provider value={{ handleUpdateErrors }}>
-      {errors.map(({ message }) => (
-        <Alert key={message} message={message} open severity={KEYS.error} />
-      ))}
+      {errors.forEach(({ message }) => toast.error(message))}
       {children}
     </ErrorContext.Provider>
   );

@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import { useQuery } from '@apollo/client';
 import { Box } from '@material-ui/core';
-import { ReactiveVars } from 'src/apollo';
+import { toast } from 'material-react-toastify';
 import { KEYS } from 'src/defs';
 import { Query, State } from 'src/graphql';
 import { Loader } from 'src/theme/components';
@@ -23,6 +23,8 @@ const Categories: React.FC = () => {
     fetchMore,
   } = useQuery(Query.CATEGORY.CATEGORIES);
 
+  toast.error(error);
+
   useEffect(() => {
     const { expanded } = filters[CardName];
     const expandedIds = Object.keys(expanded).filter((_id) => expanded[_id]);
@@ -40,8 +42,6 @@ const Categories: React.FC = () => {
       }
     }
   }, [data, filters, fetchMore]);
-
-  if (error) ReactiveVars.alert({ error, open: true, severity: KEYS.error });
 
   return (
     <Box height="100%" overflow="auto">

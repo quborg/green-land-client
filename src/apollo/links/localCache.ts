@@ -39,9 +39,9 @@ const initFilters = (fieldName: string, data: TYPES.SelectableEntities): void =>
   }
 };
 
-const initData = (fieldName: string, data: TYPES.SelectableEntities): void => {
-  if (fieldToFilterName[fieldName] === KEYS.categories) ReactiveVars.data(data);
-};
+// const initData = (fieldName: string, data: TYPES.SelectableEntities): void => {
+//   if (fieldToFilterName[fieldName] === KEYS.categories) ReactiveVars.data(data);
+// };
 
 const dedupData = (e: any[], i: any[]): any[] => {
   const indexes: string[] = [];
@@ -58,7 +58,7 @@ const cachePolicies: FieldPolicy = {
   merge: (existing = [], incoming = [], { fieldName }) => {
     const data = dedupData(existing, incoming);
     initFilters(fieldName, data);
-    initData(fieldName, data);
+    // initData(fieldName, data);
     return data;
   },
 };
@@ -73,12 +73,6 @@ const localCache = new InMemoryCache({
         getSheikhs: cachePolicies,
         filters: {
           read: () => ReactiveVars.filters(),
-        },
-        alert: {
-          read: () => ReactiveVars.alert(),
-        },
-        data: {
-          read: () => ReactiveVars.data(),
         },
       },
     },

@@ -11,5 +11,7 @@ declare namespace TYPES {
   type CardBoxProps = CardProps;
   type CardsProps = CardProps;
 
-  type TitleCardProps = CardProps & Theme;
+  type TitleCardProps = CardProps;
+  type TitleCardViewProps = CardProps &
+    Theme & { selectable: boolean; filters: FiltersProps; restFilters: FiltersProps };
 }

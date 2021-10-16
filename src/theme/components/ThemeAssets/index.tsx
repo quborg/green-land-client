@@ -1,14 +1,15 @@
 import { CssBaseline } from '@material-ui/core';
+import { ToastContainer } from 'material-react-toastify';
 import { CssGlobal } from 'src/theme/styles';
 
-import Alert from '../Alert';
+import 'material-react-toastify/dist/ReactToastify.css';
 
 const CSSGlobal: React.FC = ({ children }) => (
   <>
     <CssBaseline />
     <CssGlobal />
     {children}
-    <Alert />
+    <ToastContainer autoClose={5000} position="bottom-center" rtl />
   </>
 );
 

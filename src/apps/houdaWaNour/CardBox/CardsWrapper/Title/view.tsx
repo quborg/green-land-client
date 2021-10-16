@@ -1,25 +1,16 @@
-import { useState } from 'react';
-
-import { useQuery } from '@apollo/client';
 import { Box, Checkbox, FormControlLabel, Typography, withStyles } from '@material-ui/core';
 import { KEYS } from 'src/defs';
-import { State } from 'src/graphql';
 import { setReactiveLocalFilters } from 'src/helpers';
 import { Local as Tr } from 'src/local';
 
-const Title: React.FC<TYPES.TitleCardProps> = ({ cardName, theme }) => {
-  const [selectable] = useState(
-    [KEYS.sheikhs, KEYS.books, KEYS.categories].includes(cardName)
-  );
-
-  const {
-    data: {
-      filters: {
-        [selectable ? cardName : KEYS.default]: { all, selected = {}, expanded = {} },
-        ...restFilters
-      },
-    },
-  } = useQuery(State.FILTERS);
+const TitleCardView: React.FC<TYPES.TitleCardViewProps> = ({
+  cardName,
+  selectable,
+  filters,
+  restFilters,
+  theme,
+}) => {
+  const { all, selected = {}, expanded = {} } = filters;
 
   const handleSelectAll = (nextAll: boolean): void => {
     let nextSelected = selected;
@@ -29,12 +20,12 @@ const Title: React.FC<TYPES.TitleCardProps> = ({ cardName, theme }) => {
       nextSelected = { ...nextSelected, [_id]: overrideNextAll };
     });
     setReactiveLocalFilters({
-      ...restFilters,
       [cardName]: {
         all: overrideNextAll,
         selected: nextSelected,
         ...(cardName === KEYS.categories && { expanded }),
       },
+      ...restFilters,
     });
   };
 
@@ -65,4 +56,4 @@ const Title: React.FC<TYPES.TitleCardProps> = ({ cardName, theme }) => {
   );
 };
 
-export default withStyles({}, { withTheme: true })(Title);
+export default withStyles({}, { withTheme: true })(TitleCardView);

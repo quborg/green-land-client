@@ -1,7 +1,7 @@
 import React, { FC, useCallback, useContext, useState } from 'react';
 
 import {
-  createMuiTheme,
+  createTheme,
   ThemeProvider as MuiThemeProvider,
   PaletteType,
   Theme,
@@ -62,7 +62,7 @@ function TypeMode(): PaletteType {
 export function CreateTheme(): ThemeData {
   const type = TypeMode();
   const [theme, setTheme] = useState<Theme>(
-    createMuiTheme({
+    createTheme({
       ...initialThemeObject(type),
     })
   );
@@ -71,8 +71,8 @@ export function CreateTheme(): ThemeData {
     setTheme((currentTheme) => {
       const isNewThemeDark = currentTheme.palette.type !== 'dark';
       LocalTheme.setLocalTheme(isNewThemeDark);
-      if (isNewThemeDark) return createMuiTheme(initialThemeObject('dark'));
-      return createMuiTheme(initialThemeObject('dark'));
+      if (isNewThemeDark) return createTheme(initialThemeObject('dark'));
+      return createTheme(initialThemeObject('dark'));
     });
   }, []);
 
@@ -84,7 +84,7 @@ export function CreateTheme(): ThemeData {
 }
 
 export const ThemeContext = React.createContext<ThemeData>({
-  theme: createMuiTheme(initialThemeObject()),
+  theme: createTheme(initialThemeObject()),
   toggleTheme: () => {},
 });
 

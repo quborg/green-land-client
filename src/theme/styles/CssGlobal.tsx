@@ -1,5 +1,5 @@
 import { Theme, withStyles } from '@material-ui/core';
-import { fade } from '@material-ui/core/styles/colorManipulator';
+import { alpha } from '@material-ui/core/styles/colorManipulator';
 
 const CssGlobal = withStyles(({ spacing, palette }: Theme) => ({
   '@global': {
@@ -11,13 +11,13 @@ const CssGlobal = withStyles(({ spacing, palette }: Theme) => ({
       height: spacing(0.625),
     },
     '::-webkit-scrollbar-track': {
-      boxShadow: ['inset 0 0 6px', fade(palette.common.grayDark, 0.2)].join(' '),
+      boxShadow: ['inset 0 0 6px', alpha(palette.common.grayDark, 0.2)].join(' '),
     },
     '::-webkit-scrollbar-thumb': {
-      backgroundColor: fade(palette.common.grayDark, 0.2),
+      backgroundColor: alpha(palette.common.grayDark, 0.2),
       borderRadius: '2rem',
       '&:hover': {
-        backgroundColor: fade(palette.common.cyan, 0.2),
+        backgroundColor: alpha(palette.common.cyan, 0.2),
       },
     },
     '[class*="colorSecondary"]': {

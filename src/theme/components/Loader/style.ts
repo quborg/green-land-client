@@ -14,7 +14,7 @@ const style = (theme: Theme): any => ({
   backdrop: {
     zIndex: theme.zIndex.drawer + 1,
     position: 'absolute',
-    opacity: '0.2 !important',
+    opacity: '0.1 !important',
     backgroundColor: 'rgba(0, 0, 0, 0.3)',
   },
 });
