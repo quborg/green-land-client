@@ -1,13 +1,14 @@
 import { Box, withStyles } from '@material-ui/core';
-import style from 'src/apps/houdaWaNour/style';
 import { KEYS } from 'src/defs';
 import { setReactiveLocalFilters } from 'src/helpers';
 
-const CardName = KEYS.books;
+import style from '../style';
 
-const BooksView: React.FC<TYPES.BooksViewProps> = ({ classes, data, filters }) => {
+const CardName = KEYS.sheikhs;
+
+const Sheikhs: React.FC<TYPES.SheikhsViewProps> = ({ data, filters, classes }) => {
   const handleItemClick = (_id: string): void => {
-    const { all, selected, expanded } = filters[CardName];
+    const { selected, all, expanded, ...restItemFilters } = filters[CardName];
     const nextSelected = { ...selected, [_id]: !selected[_id] };
     const itemsLength = Object.keys(selected).length;
     const selectedLength = Object.keys(nextSelected).filter((id) => nextSelected[id]).length;
@@ -15,16 +16,15 @@ const BooksView: React.FC<TYPES.BooksViewProps> = ({ classes, data, filters }) =
     if (!selectedLength) nextAll = false;
     else if (selectedLength < itemsLength) nextAll = KEYS.indeterminate;
     else nextAll = true;
-    console.log('nextAll', nextAll);
     setReactiveLocalFilters({
       ...filters,
-      [CardName]: { all: nextAll, selected: nextSelected, expanded },
+      [CardName]: { all: nextAll, selected: nextSelected, expanded, ...restItemFilters },
     });
   };
 
   return (
     <>
-      {data.map(({ _id, title }) => (
+      {data.map(({ _id, name }) => (
         <Box
           className={`${classes.selectableItem} ${
             filters[CardName].selected[_id] ? 'selected' : KEYS.indeterminate
@@ -33,11 +33,11 @@ const BooksView: React.FC<TYPES.BooksViewProps> = ({ classes, data, filters }) =
           onClick={() => handleItemClick(_id)}
           px={0.5}
           py={0.3}>
-          {title}
+          {name}
         </Box>
       ))}
     </>
   );
 };
 
-export default withStyles(style)(BooksView);
+export default withStyles(style)(Sheikhs);

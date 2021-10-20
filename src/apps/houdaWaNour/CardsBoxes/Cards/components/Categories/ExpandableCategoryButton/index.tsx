@@ -1,7 +1,8 @@
 import { Box, IconButton, withStyles } from '@material-ui/core';
 import * as Icons from '@material-ui/icons';
-import style from 'src/apps/houdaWaNour/style';
 import { setReactiveLocalFilters } from 'src/helpers';
+
+import style from './style';
 
 const ExpandableButton: React.FC<TYPES.ExpandableButtonProps> = ({
   _id,

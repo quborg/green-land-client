@@ -14,7 +14,7 @@ const initFilters = (fieldName: string, data: TYPES.SelectableEntities): void =>
     const CardName = fieldToFilterName[fieldName];
     let nextFilters = ReactiveVars.filters();
     const {
-      [CardName]: { selected = {}, all, expanded = {} },
+      [CardName]: { selected = {}, all, expanded = {}, ...restItemFilters },
       ...filters
     } = nextFilters;
     const selectedLength = Object.keys(selected).length;
@@ -32,6 +32,7 @@ const initFilters = (fieldName: string, data: TYPES.SelectableEntities): void =>
           all,
           selected: nextSelected,
           ...(CardName === KEYS.categories && { expanded: nextExpanded }),
+          ...restItemFilters,
         },
       };
     }

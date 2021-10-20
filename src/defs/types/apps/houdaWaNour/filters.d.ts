@@ -1,8 +1,10 @@
 declare namespace TYPES {
   type ItemsFilter = {
-    all: boolean | KEYS.indeterminate;
+    all?: boolean | KEYS.indeterminate;
     selected?: { [_id: string]: boolean };
     expanded?: { [_id: string]: boolean };
+    keyword?: string;
+    openSearch?: boolean;
   };
   type FiltersProps = {
     search: {

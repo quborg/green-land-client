@@ -1,6 +1,6 @@
 import { Grid, withStyles } from '@material-ui/core';
 
-import CardBox from './CardBox';
+import CardBox from './CardsBoxes';
 import style from './style';
 
 const HoudaWaNour: React.FC<TYPES.ClassesProps> = ({ classes }) => (
@@ -12,7 +12,7 @@ const HoudaWaNour: React.FC<TYPES.ClassesProps> = ({ classes }) => (
         </Grid>
       </Grid>
       <Grid container>
-        <Grid className={classes.sheikhsClassify} item xs={6}>
+        <Grid className={classes.sheikhsAndCategory} item xs={6}>
           <Grid container>
             <Grid className={classes.sheikhs} item xs>
               <CardBox cardName="sheikhs" />

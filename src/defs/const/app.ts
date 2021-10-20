@@ -6,10 +6,16 @@ export const FILTERS: TYPES.FiltersProps = {
     exclude: '',
     fatwasOnly: false,
   },
-  sheikhs: { all: false, selected: {} },
-  categories: { all: false, selected: {}, expanded: {} },
-  books: { all: false, selected: {} },
+  sheikhs: { all: false, selected: {}, expanded: {}, keyword: '', openSearch: false },
+  categories: { all: false, selected: {}, expanded: {}, keyword: '', openSearch: false },
+  books: { all: false, selected: {}, keyword: '', openSearch: false },
   default: '',
 };
 
-export default {};
+export const DIM = {
+  H: {
+    topBar: 8,
+    topSpace: 8,
+    bottomSpace: 8,
+  },
+};

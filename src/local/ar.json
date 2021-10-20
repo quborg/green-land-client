@@ -16,5 +16,6 @@
   "words excluded": "كلمات مستبعدة من النتائج",
   "in fatwas only": "بحث في الأسئلة والفتاوى فقط",
   "i exclude": "أستبعد هذه الكلمات",
-  "advancedSearch": "بحث متقدم"
+  "advancedSearch": "بحث متقدم",
+  "default": "إفتراضي"
 }

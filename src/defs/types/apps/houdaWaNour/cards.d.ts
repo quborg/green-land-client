@@ -7,11 +7,16 @@ declare namespace TYPES {
     | KEYS.indexes
     | KEYS.indexView
     | KEYS.dump;
-  type CardProps = { cardName: CardNameType };
-  type CardBoxProps = CardProps;
-  type CardsProps = CardProps;
+  type CardNameProps = { cardName: CardNameType };
+  type CardBoxProps = CardNameProps;
+  type CardsProps = CardNameProps;
 
-  type TitleCardProps = CardProps;
-  type TitleCardViewProps = CardProps &
+  type SearchItemFilterProps = {
+    keyword: string;
+    setKeyword: (keyword: string) => void;
+  };
+
+  type TitleCardProps = CardNameProps;
+  type TitleCardViewProps = CardNameProps &
     Theme & { selectable: boolean; filters: FiltersProps; restFilters: FiltersProps };
 }

@@ -1,12 +1,7 @@
 import { KEYS } from 'src/defs';
+import Tr from 'src/local';
 
-import Books from './Books';
-import Categories from './Categories';
-import Dump from './Dump';
-import Indexes from './Indexes';
-import IndexView from './IndexView';
-import Search from './Search';
-import Sheikhs from './Sheikhs';
+import { Books, Categories, Dump, Indexes, IndexView, Search, Sheikhs } from './components';
 
 const Cards: React.FC<TYPES.CardsProps> = ({ cardName }) => {
   if (cardName === KEYS.search) return <Search />;
@@ -16,7 +11,11 @@ const Cards: React.FC<TYPES.CardsProps> = ({ cardName }) => {
   if (cardName === KEYS.indexes) return <Indexes />;
   if (cardName === KEYS.indexView) return <IndexView />;
   if (cardName === KEYS.dump) return <Dump />;
-  return <>{cardName || 'box'}</>;
+  return <>{cardName}</>;
+};
+
+Cards.defaultProps = {
+  cardName: Tr(KEYS.default),
 };
 
 export default Cards;

@@ -1,20 +1,20 @@
 import { Box, lighten, withStyles } from '@material-ui/core';
-import style from 'src/apps/houdaWaNour/style';
 import { KEYS } from 'src/defs';
 import { setReactiveLocalFilters } from 'src/helpers';
 
-import ExpandableButton from './ExpandableButton';
+import style from '../style';
+import ExpandableButton from './ExpandableCategoryButton';
 
 const CategoriesView: React.FC<TYPES.CategoriesViewProps> = ({
-  classes,
   data,
   filters,
   fetchMore,
   loading,
   theme,
+  classes,
 }) => {
   const {
-    categories: { all, selected = {}, expanded = {} },
+    categories: { all, selected = {}, expanded = {}, ...restItemFilters },
     ...restFilters
   } = filters;
 
@@ -30,7 +30,7 @@ const CategoriesView: React.FC<TYPES.CategoriesViewProps> = ({
     else nextAll = true;
     setReactiveLocalFilters({
       ...restFilters,
-      categories: { all: nextAll, selected: nextSelected, expanded: { ...expanded } },
+      categories: { all: nextAll, selected: nextSelected, expanded, ...restItemFilters },
     });
   };
 
