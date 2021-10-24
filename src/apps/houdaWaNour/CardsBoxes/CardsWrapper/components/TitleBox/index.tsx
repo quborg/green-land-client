@@ -13,11 +13,11 @@ const TitleCard: React.FC<TYPES.TitleCardProps> = ({ cardName }) => {
 
   const {
     data: {
-      filters: { [selectable ? cardName : KEYS.default]: filters, ...restFilters },
+      filters: { [selectable ? cardName : KEYS.default]: itemFilters, ...restFilters },
     },
   } = useQuery(State.FILTERS);
 
-  return <View {...{ cardName, selectable, filters, restFilters }} />;
+  return <View {...{ cardName, selectable, itemFilters, restFilters }} />;
 };
 
 export default TitleCard;

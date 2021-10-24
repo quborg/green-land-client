@@ -39,7 +39,7 @@ const Search: React.FC<TYPES.ClassesProps> = ({ classes }) => {
 
   return (
     <Box>
-      <Box>
+      <Box px={1}>
         <SearchField handleSearchFilters={handleSearchFilters} keyword={search.keyword} />
       </Box>
       {advancedSearch ? (
@@ -98,13 +98,11 @@ const Search: React.FC<TYPES.ClassesProps> = ({ classes }) => {
             pr={1.5}
             py={1}>
             <Box alignItems="center" display="flex">
-              <Icons.FindReplaceRounded color="action" fontSize="small" />
               <Box alignItems="center" display="flex" ml={1}>
                 <Typography color="textSecondary">{Tr('advancedSearch')}</Typography>
                 <Icons.KeyboardArrowDownRounded color="action" />
               </Box>
             </Box>
-            <Icons.FilterListRounded color="action" fontSize="small" />
           </Box>
         </FormControl>
       )}

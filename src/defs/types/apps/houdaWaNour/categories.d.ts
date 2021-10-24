@@ -8,9 +8,9 @@ declare namespace TYPES {
       ID: string;
       child: boolean;
       level: number;
-      all: ItemsFilter['all'];
-      selected: ItemsFilter['selected'];
-      expanded: ItemsFilter['expanded'];
+      all: ItemFilters['all'];
+      selected: ItemFilters['selected'];
+      expanded: ItemFilters['expanded'];
       restFilters: any;
       fetchMore: TFetchMore;
       loading: boolean;

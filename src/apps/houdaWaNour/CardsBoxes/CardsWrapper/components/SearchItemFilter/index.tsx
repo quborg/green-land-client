@@ -3,18 +3,19 @@ import * as Icons from '@material-ui/icons';
 
 const SearchItemFilter: React.FC<TYPES.SearchItemFilterProps> = ({ keyword, setKeyword }) => (
   <TextField
-    focused
     fullWidth
     InputProps={{
       startAdornment: (
         <InputAdornment position="start">
-          <Icons.Search fontSize="small" />
+          <IconButton disabled size="small">
+            <Icons.Search fontSize="small" />
+          </IconButton>
         </InputAdornment>
       ),
       endAdornment: (
         <InputAdornment position="end">
-          <IconButton onClick={() => setKeyword('')}>
-            <Icons.Close fontSize="small" />
+          <IconButton onClick={() => setKeyword('')} size="small">
+            <Icons.Close style={{ fontSize: '0.8rem' }} />
           </IconButton>
         </InputAdornment>
       ),

@@ -9,8 +9,6 @@ import { Loader } from 'src/theme/components';
 
 import View from './view';
 
-const CardName = KEYS.categories;
-
 const Categories: React.FC = () => {
   const {
     data: { filters },
@@ -26,7 +24,7 @@ const Categories: React.FC = () => {
   toast.error(error);
 
   useEffect(() => {
-    const { expanded } = filters[CardName];
+    const { expanded } = filters.categories;
     const expandedIds = Object.keys(expanded).filter((_id) => expanded[_id]);
     if (expandedIds.length) {
       const expandedNotLoaded = expandedIds.filter(
@@ -44,7 +42,7 @@ const Categories: React.FC = () => {
   }, [data, filters, fetchMore]);
 
   return (
-    <Box height="100%" overflow="auto">
+    <Box>
       {loading && <Loader loading={loading} />}
       <View {...{ data: data.getCategories, filters, fetchMore, loading }} />
     </Box>

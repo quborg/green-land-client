@@ -1,5 +1,5 @@
 declare namespace TYPES {
-  type ItemsFilter = {
+  type ItemFilters = {
     all?: boolean | KEYS.indeterminate;
     selected?: { [_id: string]: boolean };
     expanded?: { [_id: string]: boolean };
@@ -14,9 +14,9 @@ declare namespace TYPES {
       exclude: string;
       fatwasOnly: boolean;
     };
-    sheikhs: ItemsFilter;
-    categories: ItemsFilter;
-    books: ItemsFilter;
+    sheikhs: ItemFilters;
+    categories: ItemFilters;
+    books: ItemFilters;
     default: any;
   };
 }

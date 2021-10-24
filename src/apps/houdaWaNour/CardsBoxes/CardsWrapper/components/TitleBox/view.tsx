@@ -14,11 +14,11 @@ import { Local as Tr } from 'src/local';
 const TitleCardView: React.FC<TYPES.TitleCardViewProps> = ({
   cardName,
   selectable,
-  filters,
+  itemFilters,
   restFilters,
   theme,
 }) => {
-  const { all, selected = {}, expanded = {}, openSearch, ...restItemFilters } = filters;
+  const { all, selected = {}, expanded = {}, openSearch, ...restItemFilters } = itemFilters;
 
   const handleSelectAll = (nextAll: boolean): void => {
     let nextSelected = selected;
@@ -79,7 +79,7 @@ const TitleCardView: React.FC<TYPES.TitleCardViewProps> = ({
             <IconButton onClick={setOpenSearch} size="small">
               {openSearch ? (
                 <Icons.SearchOff
-                  style={{ color: theme.palette.common.teal, fontSize: '1rem' }}
+                  style={{ color: theme.palette.common.pink, fontSize: '1rem' }}
                 />
               ) : (
                 <Icons.Search style={{ color: theme.palette.common.teal, fontSize: '1rem' }} />

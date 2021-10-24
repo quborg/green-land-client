@@ -16,7 +16,7 @@ const Sheikhs: React.FC = () => {
   toast.error(error);
 
   return (
-    <Box height="100%" overflow="auto">
+    <Box>
       {loading && <Loader loading={loading} />}
       <View {...{ data: data.getSheikhs, filters }} />
     </Box>

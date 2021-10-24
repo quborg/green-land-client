@@ -14,10 +14,10 @@ const CssGlobal = withStyles(({ spacing, palette }: Theme) => ({
       boxShadow: ['inset 0 0 6px', alpha(palette.common.grayDark, 0.2)].join(' '),
     },
     '::-webkit-scrollbar-thumb': {
-      backgroundColor: alpha(palette.common.grayDark, 0.2),
+      backgroundColor: alpha(palette.common.chocolate, 0.5),
       borderRadius: '2rem',
       '&:hover': {
-        backgroundColor: alpha(palette.common.cyan, 0.2),
+        backgroundColor: alpha(palette.common.chocolate, 0.8),
       },
     },
     '[class*="colorSecondary"]': {

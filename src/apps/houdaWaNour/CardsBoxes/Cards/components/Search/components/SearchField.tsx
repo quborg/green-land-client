@@ -7,12 +7,14 @@ const SearchField: React.FC<TYPES.SearchFieldProps> = ({ handleSearchFilters, ke
     InputProps={{
       startAdornment: (
         <InputAdornment position="start">
-          <Icons.Search fontSize="small" />
+          <IconButton disabled size="small">
+            <Icons.Search fontSize="small" />
+          </IconButton>
         </InputAdornment>
       ),
       endAdornment: (
         <InputAdornment position="end">
-          <IconButton onClick={() => handleSearchFilters({ keyword: '' })}>
+          <IconButton onClick={() => handleSearchFilters({ keyword: '' })} size="small">
             <Icons.Close fontSize="small" />
           </IconButton>
         </InputAdornment>
