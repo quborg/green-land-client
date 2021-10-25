@@ -16,7 +16,6 @@ const BooksView: React.FC<TYPES.BooksViewProps> = ({ classes, data, filters }) =
     if (!selectedLength) nextAll = false;
     else if (selectedLength < itemsLength) nextAll = KEYS.indeterminate;
     else nextAll = true;
-    console.log('nextAll', nextAll);
     setReactiveLocalFilters({
       ...filters,
       [CardName]: { all: nextAll, selected: nextSelected, expanded, ...restItemFilters },

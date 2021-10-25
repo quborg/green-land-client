@@ -23,7 +23,7 @@ const ExpandableButton: React.FC<TYPES.ExpandableButtonProps> = ({
       key={`${_id}-expandable`}
       onClick={() => {
         if (level < 7 && !expanded[_id] && child)
-          fetchMore({ variables: { args: { filter: { parent: ID } } } });
+          fetchMore({ variables: { args: { filters: { parent: ID } } } });
         setReactiveLocalFilters({
           ...restFilters,
           categories: {

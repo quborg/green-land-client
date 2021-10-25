@@ -32,6 +32,7 @@ const TitleCardView: React.FC<TYPES.TitleCardViewProps> = ({
         all: overrideNextAll,
         selected: nextSelected,
         ...(cardName === KEYS.categories && { expanded }),
+        openSearch,
         ...restItemFilters,
       },
       ...restFilters,
@@ -74,7 +75,9 @@ const TitleCardView: React.FC<TYPES.TitleCardViewProps> = ({
           />
           <Box display="flex">
             <IconButton onClick={() => {}} size="small">
-              <Icons.Replay style={{ color: theme.palette.common.teal, fontSize: '1rem' }} />
+              <Icons.CachedRounded
+                style={{ color: theme.palette.common.teal, fontSize: '1rem' }}
+              />
             </IconButton>
             <IconButton onClick={setOpenSearch} size="small">
               {openSearch ? (

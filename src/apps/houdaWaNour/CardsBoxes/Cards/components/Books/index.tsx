@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 import { useQuery } from '@apollo/client';
 import { Box } from '@material-ui/core';
 import { toast } from 'material-react-toastify';
@@ -11,9 +13,24 @@ const Books: React.FC = () => {
     data: { filters },
   } = useQuery(State.FILTERS);
 
-  const { loading, error, data = { getBooks: [] } } = useQuery(Query.BOOK.BOOKS);
+  const [title, setTitle] = useState((filters as TYPES.FiltersProps).books.keyword);
+
+  const {
+    loading,
+    error,
+    data = { getBooks: [] },
+    refetch,
+  } = useQuery(Query.BOOK.BOOKS, { variables: { args: { filters: { title } } } });
 
   toast.error(error);
+
+  useEffect(() => {
+    const nextTitle = (filters as TYPES.FiltersProps).books.keyword;
+    if (title !== nextTitle) {
+      setTitle(nextTitle);
+      refetch({ args: { filters: { title: nextTitle } } });
+    }
+  }, [title, filters, refetch]);
 
   return (
     <Box>

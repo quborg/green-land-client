@@ -12,10 +12,10 @@ const ControlAdvancedSearch: React.FC<TYPES.ControlAdvancedSearchProps> = ({
 }) => (
   <Box height={0} position="absolute" right={theme.spacing(1)} top={theme.spacing(0.5)}>
     <IconButton onClick={() => handleSearchFilters(ResetSearch)} size="small">
-      <Icons.ReplayRounded color="secondary" style={{ fontSize: '1rem' }} />
+      <Icons.RestartAltRounded color="secondary" style={{ fontSize: '1.1rem' }} />
     </IconButton>
     <IconButton onClick={() => setAdvancedSearch(false)} size="small">
-      <Icons.CloseRounded color="secondary" fontSize="small" />
+      <Icons.CloseRounded color="secondary" style={{ fontSize: '1.2rem' }} />
     </IconButton>
   </Box>
 );

@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { Box } from '@material-ui/core';
 import { toast } from 'material-react-toastify';
-import { KEYS } from 'src/defs';
 import { Query, State } from 'src/graphql';
 import { Loader } from 'src/theme/components';
 
@@ -35,7 +34,7 @@ const Categories: React.FC = () => {
       );
       if (categoriesNotLoaded.length) {
         categoriesNotLoaded.forEach(({ ID }) =>
-          fetchMore({ variables: { args: { filter: { parent: ID } } } })
+          fetchMore({ variables: { args: { filters: { parent: ID } } } })
         );
       }
     }
