@@ -18,8 +18,27 @@ const CategoriesView: React.FC<TYPES.CategoriesViewProps> = ({
     ...restFilters
   } = filters;
 
+  const unselectParents = (
+    id: string,
+    nextSelected: TYPES.ItemsFilters['selected']
+  ): TYPES.ItemsFilters['selected'] => {
+    const nextSelectedControled = nextSelected;
+    const recursiveUnselectParent = (nId: string): void => {
+      const itemData = data.filter(({ _id }) => nId === _id)[0];
+      data.forEach(({ _id, ID }) => {
+        if (itemData.parent === ID) {
+          nextSelectedControled[_id] = false;
+          recursiveUnselectParent(_id);
+        }
+      });
+    };
+    recursiveUnselectParent(id);
+    return nextSelectedControled;
+  };
+
   const handleItemClick = (_id: string): void => {
-    const nextSelected = { ...selected, [_id]: !selected[_id] };
+    let nextSelected = { ...selected, [_id]: !selected[_id] };
+    nextSelected = unselectParents(_id, nextSelected);
     const prevSelectedLength = Object.keys(selected).length;
     const nextSelectedLength = Object.keys(nextSelected).filter(
       (id) => nextSelected[id]
@@ -69,7 +88,8 @@ const CategoriesView: React.FC<TYPES.CategoriesViewProps> = ({
               <Box
                 display="flex"
                 key={`${_id}-selectable`}
-                onClick={() => handleItemClick(_id)}
+                onClick={() => !expanded[_id] && handleItemClick(_id)}
+                style={{ cursor: expanded[_id] ? 'not-allowed' : 'pointer' }}
                 width="100%">
                 {name}
               </Box>

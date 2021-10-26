@@ -4,11 +4,11 @@ import { Box, Divider, Paper, withStyles } from '@material-ui/core';
 import { KEYS } from 'src/defs';
 import { setReactiveLocalFilters } from 'src/helpers';
 
-import { SearchItemFilter, TitleBox } from './components';
+import { SearchItems, TitleBox } from './components';
 
 const CardsWrapperView: React.FC<TYPES.CardWrapperViewProps> = ({
   cardName,
-  searchable,
+  searchableItems,
   itemFilters,
   restFilters,
   children,
@@ -22,9 +22,9 @@ const CardsWrapperView: React.FC<TYPES.CardWrapperViewProps> = ({
   useEffect(() => {
     const t = titleHeight?.current?.clientHeight || 32;
     const s = searchHeight?.current?.clientHeight || 33;
-    const h = searchable && openSearch ? t + s : t;
+    const h = searchableItems && openSearch ? t + s : t;
     if (headerHeight !== h) setHeaderHeight(h);
-  }, [headerHeight, setHeaderHeight, searchable, openSearch]);
+  }, [headerHeight, setHeaderHeight, searchableItems, openSearch]);
 
   const setKeyword = (key: string): void => {
     setReactiveLocalFilters({
@@ -45,12 +45,12 @@ const CardsWrapperView: React.FC<TYPES.CardWrapperViewProps> = ({
           style={{ height: '100%', overflow: cardName !== KEYS.search ? 'hidden' : 'unset' }}>
           <Box height="100%">
             <Box {...{ ref: titleHeight }}>
-              <TitleBox cardName={cardName} />
+              <TitleBox {...{ cardName, searchableItems }} />
             </Box>
-            {searchable && openSearch && (
+            {searchableItems && openSearch && (
               <Box {...{ ref: searchHeight }}>
                 <Divider />
-                <SearchItemFilter {...{ keyword, setKeyword }} />
+                <SearchItems {...{ keyword, setKeyword }} />
               </Box>
             )}
             <Divider />

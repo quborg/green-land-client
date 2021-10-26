@@ -12,8 +12,8 @@ declare namespace TYPES {
 
   type CardWrapperProps = CardNameProps;
   type CardWrapperViewProps = CardNameProps & {
-    searchable: boolean;
-    itemFilters: ItemFilters;
+    searchableItems: boolean;
+    itemFilters: ItemsFilters;
     restFilters: FiltersProps;
   };
 
@@ -26,7 +26,13 @@ declare namespace TYPES {
     setKeyword: (keyword: string) => void;
   };
 
-  type TitleCardProps = CardNameProps;
+  type TitleCardProps = CardNameProps & { searchableItems: boolean };
   type TitleCardViewProps = CardNameProps &
-    Theme & { selectable: boolean; itemFilters: ItemFilters; restFilters: FiltersProps };
+    Theme & {
+      selectableAll: boolean;
+      searchableItems: boolean;
+      itemFilters: ItemsFilters;
+      restFilters: FiltersProps;
+      categoriesData0: SCHEMA.Category[];
+    };
 }

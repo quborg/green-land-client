@@ -7,17 +7,15 @@ import { State } from 'src/graphql';
 import View from './view';
 
 const CardsWrapper: React.FC<TYPES.CardWrapperProps> = ({ cardName, children }) => {
-  const [searchable] = useState(
-    [KEYS.sheikhs, KEYS.books, KEYS.categories].includes(cardName)
-  );
+  const [searchableItems] = useState(cardName === KEYS.books);
 
   const {
     data: {
-      filters: { [searchable ? cardName : KEYS.default]: itemFilters, ...restFilters },
+      filters: { [searchableItems ? cardName : KEYS.default]: itemFilters, ...restFilters },
     },
   } = useQuery(State.FILTERS);
 
-  return <View {...{ cardName, searchable, itemFilters, restFilters }}>{children}</View>;
+  return <View {...{ cardName, searchableItems, itemFilters, restFilters }}>{children}</View>;
 };
 
 export default CardsWrapper;

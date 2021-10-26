@@ -1,11 +1,12 @@
 declare namespace TYPES {
-  type ItemFilters = {
+  type ItemsFilters = {
     all?: boolean | KEYS.indeterminate;
-    selected?: { [_id: string]: boolean };
+    selected: { [_id: string]: boolean };
     expanded?: { [_id: string]: boolean };
     keyword?: string;
     openSearch?: boolean;
   };
+
   type FiltersProps = {
     search: {
       keyword: string;
@@ -14,9 +15,9 @@ declare namespace TYPES {
       exclude: string;
       fatwasOnly: boolean;
     };
-    sheikhs: ItemFilters;
-    categories: ItemFilters;
-    books: ItemFilters;
+    sheikhs: ItemsFilters;
+    categories: ItemsFilters;
+    books: ItemsFilters;
     default: any;
   };
 }
