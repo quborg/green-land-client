@@ -23,8 +23,6 @@ const TitleCard: React.FC<TYPES.TitleCardProps> = ({ cardName, searchableItems }
     fetchPolicy: 'no-cache',
   });
 
-  console.log(cardName, data.getCategories);
-
   return (
     <View
       {...{

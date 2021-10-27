@@ -22,23 +22,43 @@ const CategoriesView: React.FC<TYPES.CategoriesViewProps> = ({
     id: string,
     nextSelected: TYPES.ItemsFilters['selected']
   ): TYPES.ItemsFilters['selected'] => {
-    const nextSelectedControled = nextSelected;
+    const nextSelectedCopy = nextSelected;
     const recursiveUnselectParent = (nId: string): void => {
       const itemData = data.filter(({ _id }) => nId === _id)[0];
       data.forEach(({ _id, ID }) => {
         if (itemData.parent === ID) {
-          nextSelectedControled[_id] = false;
+          nextSelectedCopy[_id] = false;
           recursiveUnselectParent(_id);
         }
       });
     };
     recursiveUnselectParent(id);
-    return nextSelectedControled;
+    return nextSelectedCopy;
+  };
+
+  const unselectChildren = (
+    id: string,
+    nextSelected: TYPES.ItemsFilters['selected']
+  ): TYPES.ItemsFilters['selected'] => {
+    const nextSelectedCopy = nextSelected;
+    const recursiveUnselectChildren = (nId: string): void => {
+      const itemData = data.filter(({ _id }) => nId === _id)[0];
+      data.forEach(({ _id, parent }) => {
+        if (itemData.ID === parent) {
+          nextSelectedCopy[_id] = false;
+          recursiveUnselectChildren(_id);
+        }
+      });
+    };
+    recursiveUnselectChildren(id);
+    return nextSelectedCopy;
   };
 
   const handleItemClick = (_id: string): void => {
     let nextSelected = { ...selected, [_id]: !selected[_id] };
     nextSelected = unselectParents(_id, nextSelected);
+    nextSelected = unselectChildren(_id, nextSelected);
+
     const prevSelectedLength = Object.keys(selected).length;
     const nextSelectedLength = Object.keys(nextSelected).filter(
       (id) => nextSelected[id]
@@ -47,6 +67,7 @@ const CategoriesView: React.FC<TYPES.CategoriesViewProps> = ({
     if (!nextSelectedLength) nextAll = false;
     else if (nextSelectedLength < prevSelectedLength) nextAll = KEYS.indeterminate;
     else nextAll = true;
+
     setReactiveLocalFilters({
       ...restFilters,
       categories: { all: nextAll, selected: nextSelected, expanded, ...restItemFilters },
@@ -88,8 +109,7 @@ const CategoriesView: React.FC<TYPES.CategoriesViewProps> = ({
               <Box
                 display="flex"
                 key={`${_id}-selectable`}
-                onClick={() => !expanded[_id] && handleItemClick(_id)}
-                style={{ cursor: expanded[_id] ? 'not-allowed' : 'pointer' }}
+                onClick={() => handleItemClick(_id)}
                 width="100%">
                 {name}
               </Box>

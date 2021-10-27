@@ -33,7 +33,7 @@ const Books: React.FC = () => {
   }, [title, filters, refetch]);
 
   return (
-    <Box>
+    <Box height="100%">
       {loading && <Loader loading={loading} />}
       <View {...{ data: data.getBooks, filters }} />
     </Box>
