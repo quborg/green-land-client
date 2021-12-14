@@ -1,7 +1,7 @@
 import { ApolloClient, from } from '@apollo/client';
 import { auth, cache, error, http } from 'src/apollo/links';
 
-const apolloClient: TYPES.apolloClient = (handleUpdateErrors) =>
+const apolloClient: TYPES.ApolloClientType = (handleUpdateErrors) =>
   new ApolloClient({
     link: from([auth, error(handleUpdateErrors), http]),
     cache,

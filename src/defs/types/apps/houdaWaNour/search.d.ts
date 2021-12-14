@@ -1,23 +1,23 @@
 declare namespace TYPES {
-  type HandleSearchFilters = (nextSearch: MaybeIn<FiltersProps['search']>) => void;
+  type HandleSearchFilters = (nextSearch: MaybeIn<SearchFilters>) => void;
 
   type SearchFieldProps = {
-    keyword: FiltersProps['search']['keyword'];
+    keyword: string;
     handleSearchFilters: HandleSearchFilters;
   };
 
   type ControlAdvancedSearchProps = ThemeProps & {
-    setAdvancedSearch: React.Dispatch;
+    setIsAdvancedSearch: React.Dispatch;
     handleSearchFilters: HandleSearchFilters;
   };
 
   type SearchMethodProps = {
-    method: FiltersProps['search']['method'];
+    method: SearchFilters['method'];
     handleSearchFilters: HandleSearchFilters;
   };
 
   type SearchInProps = {
-    searchIn: FiltersProps['search']['in'];
+    searchIn: SearchFilters['in'];
     handleSearchFilters: HandleSearchFilters;
   };
 }

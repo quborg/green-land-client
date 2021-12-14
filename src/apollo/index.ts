@@ -1,2 +1,2 @@
 export { default } from './ApolloProvider';
-export { default as ReactiveVars } from './reactiveVars';
+export { default as RV } from './reactiveVars';

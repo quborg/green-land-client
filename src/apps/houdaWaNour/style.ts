@@ -1,7 +1,7 @@
 import { Theme } from '@material-ui/core';
 import { CONST } from 'src/defs';
 
-const { topBar, topSpace, bottomSpace } = CONST.App.DIM.H;
+const { topBar, topSpace, bottomSpace } = CONST.Theme.DIM.H;
 const layoutSpacing = topBar + topSpace + bottomSpace;
 
 const style = (theme: Theme): any => ({
@@ -19,6 +19,12 @@ const style = (theme: Theme): any => ({
   },
   categories: {
     height: `calc((100vh - ${theme.spacing(layoutSpacing)}px) * 0.53)`,
+  },
+  chapters: {
+    height: `calc((100vh - ${theme.spacing(layoutSpacing)}px) * 0.40)`,
+  },
+  contents: {
+    height: `calc((100vh - ${theme.spacing(layoutSpacing)}px) * 0.60)`,
   },
   books: {
     height: `calc((100vh - ${theme.spacing(layoutSpacing)}px) * 0.85)`,

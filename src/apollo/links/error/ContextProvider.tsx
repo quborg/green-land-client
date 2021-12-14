@@ -9,12 +9,16 @@ const ErrorProvider: React.FC = ({ children }) => {
   const [errors, setErrors] = useState<TYPES.ErrorsContext>(CONST.Apollo.ERRORS_INIT);
 
   const handleUpdateErrors: TYPES.handleUpdateErrors = (gqlErrors) => {
-    setErrors(gqlErrors);
+    const errorsStack: Array<string> = [];
+    gqlErrors.forEach(({ message }) => {
+      if (!errors.includes(message)) errorsStack.push(message);
+    });
+    if (errorsStack.length) setErrors(errorsStack);
   };
 
   return (
     <ErrorContext.Provider value={{ handleUpdateErrors }}>
-      {errors.forEach(({ message }) => toast.error(message))}
+      {errors.forEach((message) => toast.error(message))}
       {children}
     </ErrorContext.Provider>
   );

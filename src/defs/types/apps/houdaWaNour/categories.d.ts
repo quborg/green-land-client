@@ -1,18 +1,18 @@
 declare namespace TYPES {
   type CategoriesViewProps = ClassesProps &
-    ThemeProps &
-    TFetchMore & { data: [SCHEMA.Category]; filters: FiltersProps; loading: boolean };
-  type ExpandableButtonProps = ClassesProps &
+    ThemeProps & {
+      data: [SCHEMA.Category];
+      filters: CategoriesFilters;
+      loading: boolean;
+      networkStatus: number;
+    };
+  type ExpandCategoryButtonProps = ClassesProps &
     Theme & {
       _id: string;
       ID: string;
       child: boolean;
-      level: number;
-      all: ItemsFilters['all'];
-      selected: ItemsFilters['selected'];
-      expanded: ItemsFilters['expanded'];
-      restFilters: any;
-      fetchMore: TFetchMore;
+      filters: CategoriesFilters;
       loading: boolean;
+      networkStatus: number;
     };
 }

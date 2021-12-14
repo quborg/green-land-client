@@ -18,7 +18,7 @@ declare namespace TYPES {
   }
 
   interface ThemeProps {
-    theme: Theme;
+    theme?: MaybeIn<Theme>;
   }
 
   interface TRefetch {

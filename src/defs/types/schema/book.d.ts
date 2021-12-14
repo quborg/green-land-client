@@ -6,7 +6,7 @@ declare namespace SCHEMA {
     format: string;
     title: string;
     subtitle: string;
-    type: Type;
+    type: [string];
     authors: [Sheikh];
     presenters: [Sheikh];
     correctors: [Sheikh];
@@ -23,12 +23,5 @@ declare namespace SCHEMA {
     series: string;
     volume: number;
     related: [Book];
-  }
-
-  interface Type {
-    _id: string;
-    name: string;
-    order: number;
-    description: string;
   }
 }

@@ -1,17 +1,25 @@
 declare namespace TYPES {
   import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 
-  type handleUpdateErrors = (errors: ErrorsContext) => void;
+  type handleUpdateErrors = (errors: IErrorsContext[]) => void;
 
   interface IErrorsContext {
-    message?: string;
+    message: string;
     errors?: Maybe<{
       flag: boolean;
       [k: string]: string;
     }>;
   }
 
-  type ErrorsContext = IErrorsContext[];
+  type ErrorsContext = string[];
 
-  type apolloClient = (cb: handleUpdateErrors) => ApolloClient<NormalizedCacheObject>;
+  type ApolloClientType = (cb: handleUpdateErrors) => ApolloClient<NormalizedCacheObject>;
+
+  type InitiableEntities = MaybeIn<
+    SCHEMA.Sheikh[],
+    SCHEMA.Book[],
+    SCHEMA.Category[],
+    number,
+    { data: string[]; count: number }
+  >;
 }

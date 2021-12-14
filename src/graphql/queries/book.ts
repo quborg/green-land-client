@@ -9,11 +9,7 @@ export const BOOK = gql`
       format
       title
       subtitle
-      type {
-        _id
-        name
-        order
-      }
+      type
       authors {
         _id
       }
@@ -53,11 +49,7 @@ export const BOOKS = gql`
       format
       title
       subtitle
-      type {
-        _id
-        name
-        order
-      }
+      type
       authors {
         _id
       }

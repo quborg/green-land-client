@@ -1,10 +1,9 @@
-import { SITE_DOMAIN } from './apollo';
+export const DIM = {
+  H: {
+    topBar: 8,
+    topSpace: 8,
+    bottomSpace: 8,
+  },
+};
 
-export const MuiButtonPropsColors: Array<string> = [
-  'default',
-  'inherit',
-  'primary',
-  'secondary',
-];
-
-export const srcDefaultAvatar: string = [SITE_DOMAIN, '/avatar/default.png'].join('');
+export default {};

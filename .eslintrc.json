@@ -98,14 +98,15 @@
       {
         "allowExpressions": true
       }
-    ]
+    ],
+    "arrow-body-style": ["warn", "as-needed"]
   },
   "overrides": [
     {
       "files": ["./src/defs/types/**/*.d.ts"],
       "rules": {
         "max-len": [
-          "error", 
+          "error",
           {
             "code": 105
           }

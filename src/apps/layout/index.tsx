@@ -5,7 +5,7 @@ import { ROUTES, RoutesBuilder } from 'src/router';
 import { TopBar } from './components';
 import style from './style';
 
-const { topBar, topSpace, bottomSpace } = CONST.App.DIM.H;
+const { topBar, topSpace, bottomSpace } = CONST.Theme.DIM.H;
 
 const Layout: React.FC<TYPES.LayoutProps> = ({ classes, theme }) => (
   <Container className="GuttersNone" component="main" maxWidth="xl">
